@@ -1,0 +1,29 @@
+.header ul.categories {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0;
+  margin-bottom: 25px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.header ul li {
+  flex: auto;
+  text-align: center;
+}
+
+.header ul li a {
+  cursor: auto;
+
+  border-radius: 0 !important;
+}
+
+.category .page-link {
+  background-color: #008966;
+  border-color: #007c5d;
+}
+
+.category.active .page-link {
+  background-color: #00bc8c;
+  border-color: #007c5d;
+}
