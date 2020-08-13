@@ -1,6 +1,21 @@
 import React from 'react';
 import { Icategory } from '../../interface';
 
-export default function Category(nameCategory: any): JSX.Element {
-  return <li className="category">{nameCategory}</li>;
+type NameCategory = {
+  item: Icategory;
+};
+
+export default function Category({ item }: NameCategory): JSX.Element {
+  const classes = ['category'];
+  if (item.isActive) {
+    classes.push('active');
+  }
+
+  return (
+    <li className={classes.join(' ')}>
+      <a className="category-link" href="/">
+        {item.name}
+      </a>
+    </li>
+  );
 }
