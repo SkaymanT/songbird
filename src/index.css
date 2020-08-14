@@ -1,6 +1,4 @@
-@import './style/header/header.scss';
-@import './style/birdList.scss';
-@import './style/bird.scss';
+@import './style/style.scss';
 
 body {
   margin: 0;
