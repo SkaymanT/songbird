@@ -1,5 +1,6 @@
 import React from 'react';
-import AudioPlayer from '../audioplayer/audio-player';
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
 
 type RandomAudio = {
   img: string;
@@ -13,7 +14,10 @@ function BirdAudio(): JSX.Element {
           <h3>******</h3>
         </li>
         <li className="group-quiz-item">
-          <AudioPlayer />
+          <AudioPlayer
+            src={'https://www.xeno-canto.org/sounds/uploaded/BLMSIUFTFU/XC512582-190604_1087_Grus_tok.mp3'}
+            layout="horizontal-reverse"
+          />
         </li>
       </ul>
     </div>
