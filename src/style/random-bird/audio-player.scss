@@ -4,16 +4,57 @@
   min-width: 100px;
 }
 
-.group-quiz .rhap_container {
-  color: #00bc8c;
-  background-color: #303030;
-  box-shadow: none;
+.group-quiz {
+  .rhap_container {
+    color: #00bc8c;
+    background-color: #303030;
+    box-shadow: none;
+    padding: 0;
+    margin: 5px 0px;
+    display: flex;
+  }
+
+  .rhap_progress-section {
+    display: flex;
+    flex: 
+    flex-wrap: wrap;
+  }
+
+  .rhap_time {
+    flex: 0 1 100%;
+  }
+
+  .rhap_progress-container {
+    flex: 0 1 50%;
+  }
+
+  .rhap_total-time {
+    flex: 0 1 50%;
+  }
+
+  .rhap_progress-section:nth-child(3) {
+    align-self: flex-start
+  }
+
+  .rhap_additional-controls {
+    display: none;
+  }
+
+  .rhap_main {
+    color: #00bc8c;
+    background-color: #303030;
+  }
 }
 
-.rhap_main {
+.group-quiz .rhap_current-time,
+.group-quiz .rhap_total-time {
   color: #00bc8c;
-  background-color: #303030;
 }
+
+// .rhap_main {
+//   color: #00bc8c;
+//   background-color: #303030;
+// }
 
 .controls {
   display: flex;
