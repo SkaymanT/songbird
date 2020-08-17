@@ -14,26 +14,36 @@
     display: flex;
   }
 
+  .rhap_volume-controls {
+    justify-content: center;
+  }
   .rhap_progress-section {
     display: flex;
-    flex: 
+    flex: 3 1 auto;
     flex-wrap: wrap;
+    align-items: center;
+    margin: 0;
   }
 
   .rhap_time {
-    flex: 0 1 100%;
+    flex: 0 1 50%;
+    order: 2;
   }
 
   .rhap_progress-container {
-    flex: 0 1 50%;
+    flex: 0 1 100%;
+    order: 1;
+    margin: 15px 0 0 5px;
   }
 
   .rhap_total-time {
     flex: 0 1 50%;
+    order: 3;
+    text-align: right;
   }
 
   .rhap_progress-section:nth-child(3) {
-    align-self: flex-start
+    align-self: flex-start;
   }
 
   .rhap_additional-controls {
