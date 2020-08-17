@@ -1,13 +1,15 @@
 import React from 'react';
-// import TopPanel from './top-panel';
-// import Categories from './categories';
+import BirdAudio from './random-audio';
 
-function RandomBird(): JSX.Element {
-  // const categories = [];
+type RandomImg = {
+  img: string;
+};
+
+function RandomBird({ img }: RandomImg): JSX.Element {
   return (
-    <div className="random-bird">
-      <img className="bird-image" src="{}" alt="bird" />
-      {/* <Categories /> */}
+    <div className="random-quiz">
+      <img className="quiz-image" src={img} alt="bird" />
+      <BirdAudio />
     </div>
   );
 }
