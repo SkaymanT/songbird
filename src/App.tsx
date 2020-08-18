@@ -3,7 +3,7 @@ import './App.scss';
 import { BrowserRouter } from 'react-router-dom';
 import Header from './components/header/header';
 import RandomBird from './components/random-bird/random-bird';
-import LoaderCommon from './components/common/loader';
+import LoaderCommon from './components/common/loader/loader';
 import AnswerBird from './components/answer-bird/answer-bird';
 
 function App(): JSX.Element {
