@@ -3,3 +3,8 @@ export interface Icategory {
   id: number;
   isActive: boolean;
 }
+
+export interface Ibird {
+  name: string;
+  id: number;
+}

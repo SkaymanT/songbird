@@ -5,20 +5,23 @@ import Header from './components/header/header';
 import RandomBird from './components/random-bird/random-bird';
 import AnswerBird from './components/answer-bird/answer-bird';
 import { http } from './components/common/network/network';
-
-interface Todo {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}
+import { Ibird } from './interface';
 
 function App(): JSX.Element {
   const img = '/static/media/bird.jpg';
+  // const [todos, setTodos] = useState<ITodo[]>([]);
+  const birds: Ibird[] = [
+    { name: 'Ворон', id: 0 },
+    { name: 'Журавль', id: 1 },
+    { name: 'Ласточка', id: 2 },
+    { name: 'Козодой', id: 3 },
+    { name: 'Кукушка', id: 4 },
+    { name: 'Синица', id: 5 },
+  ];
 
   useEffect(() => {
     async function anyNameFunction() {
-      const data = await http<Todo[]>(
+      const data = await http<Ibird[]>(
         'https://jsonplaceholder.typicode.com/todos'
       );
       console.log(data);
@@ -31,7 +34,7 @@ function App(): JSX.Element {
       <BrowserRouter>
         <Header />
         <RandomBird img={img} />
-        <AnswerBird />
+        <AnswerBird birds={birds} />
       </BrowserRouter>
     </div>
   );

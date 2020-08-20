@@ -1,7 +1,7 @@
 .random-quiz {
   display: flex;
   padding: 1rem 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5625rem;
   background-color: #303030;
   border-radius: 0.3rem;
 }
@@ -28,8 +28,6 @@ ul {
   margin: 0;
   padding: 0;
   margin-left: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;

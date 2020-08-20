@@ -1,12 +1,17 @@
 import React from 'react';
 import OptionAnswers from './option-answers';
-import DetailsOption from './details-option';
+import BirdCard from './bird-card';
+import { Ibird } from '../../interface';
 
-function AnswerBird(): JSX.Element {
+type BirdList = {
+  birds: Ibird[];
+};
+
+function AnswerBird({ birds }: BirdList): JSX.Element {
   return (
     <div className="answer-bird">
-      <OptionAnswers />
-      <DetailsOption />
+      <OptionAnswers birds={birds} />
+      <BirdCard />
       <button className="btn">Next Level</button>
     </div>
   );

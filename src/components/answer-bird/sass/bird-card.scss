@@ -1,0 +1,24 @@
+@import './body-card.scss';
+
+.bird-card {
+  display: flex;
+  padding: 1rem;
+  border: 1px solid #444;
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #303030;
+  background-clip: border-box;
+  ;
+  border-radius: 0.25rem;
+}
+
+.description {
+  margin-bottom: 1rem;
+
+  span {
+    display: block;
+  }
+}

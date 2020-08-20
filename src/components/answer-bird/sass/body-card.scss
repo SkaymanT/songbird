@@ -1,0 +1,26 @@
+.body-card {
+  display: flex;
+  padding: 0;
+  flex-direction: row;
+  min-height: 173px;
+  flex: 1 1 auto;
+
+  .image-card {
+    width: 200px;
+    height: 155px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 2rem;
+  }
+
+  .group-quiz-item {
+    padding: .25rem;
+    position: relative;
+    display: block;
+    background-color: #303030;
+    border: 1px solid #555;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-radius: 0;
+  }
+}
