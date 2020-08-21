@@ -1,0 +1,71 @@
+@import './body-card.scss';
+
+.bird-card {
+  display: flex;
+  padding: 1rem;
+  border: 1px solid #444;
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #303030;
+  background-clip: border-box;
+  ;
+  border-radius: 0.25rem;
+}
+
+.description {
+  margin-bottom: 1rem;
+
+  span {
+    display: block;
+  }
+}
+
+@media (max-width: 992px) {
+  .body-card {
+    flex-direction: column;
+
+    .group-quiz {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+
+  .image-card {
+    display: block;
+    margin: 0 auto 25px;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .bird-card {
+    display: block;
+    margin-top: 40px;
+  }
+
+  .body-card {
+    flex-direction: row;
+  }
+
+  .image-card {
+    margin-right: 2rem;
+  }
+}
+
+@media (max-width: 570px) {
+  .body-card {
+    flex-direction: column;
+  }
+
+  .image-card {
+    margin: 0 auto 25px;
+  }
+
+  h4,
+  .body-card .group-quiz-item:nth-child(2) {
+    text-align: center;
+  }
+}

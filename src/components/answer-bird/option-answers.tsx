@@ -1,16 +1,23 @@
 import React from 'react';
+import { Ibird } from '../../interface';
 
-type RandomImg = {
-  img: string;
+type BirdList = {
+  birds: Ibird[];
 };
 
-function DetailsOption(): JSX.Element {
+function DetailsOption({ birds }: BirdList): JSX.Element {
   return (
     <div className="column">
       <ul className="item-list">
-        <li className="list-group-item">
-          <span className="li-btn"></span>Ворон
-        </li>
+        {birds.map((bird) => {
+          const classes = ['item-list-item'];
+          return (
+            <li className={classes.join(' ')} key={bird.id}>
+              <span className="li-btn"></span>
+              {bird.name}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
