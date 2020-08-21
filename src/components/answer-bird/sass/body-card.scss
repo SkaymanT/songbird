@@ -10,17 +10,67 @@
     height: 155px;
     border-radius: 10px;
     object-fit: cover;
-    margin-right: 2rem;
   }
 
-  .group-quiz-item {
-    padding: .25rem;
-    position: relative;
-    display: block;
-    background-color: #303030;
-    border: 1px solid #555;
-    border-right-width: 0;
-    border-left-width: 0;
-    border-radius: 0;
+  .group-quiz {
+    margin: 0;
+    padding: 0;
+    margin-left: 2rem;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: calc(100% - 240px);
+
+    .group-quiz-item {
+      padding: .25rem;
+      position: relative;
+      display: block;
+      background-color: #303030;
+      border: 1px solid #555;
+      border-right-width: 0;
+      border-left-width: 0;
+      border-radius: 0;
+
+      .rhap_main {
+        .rhap_progress-section {
+          width: 0;
+        }
+      }
+
+      @media (max-width: 1200px) {
+        .rhap_main {
+          .rhap_progress-section {
+            width: 100%;
+          }
+        }
+
+        .rhap_horizontal-reverse {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .rhap_main {
+          .rhap_progress-section {
+            width: 0;
+          }
+        }
+
+        .rhap_horizontal-reverse {
+          flex-direction: row-reverse;
+        }
+      }
+    }
+
+    .group-quiz-item:first-child {
+      border-top-width: 0;
+    }
+
+    .group-quiz-item:last-child {
+      border-bottom-width: 0;
+    }
   }
+
 }

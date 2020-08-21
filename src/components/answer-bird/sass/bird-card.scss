@@ -22,3 +22,50 @@
     display: block;
   }
 }
+
+@media (max-width: 992px) {
+  .body-card {
+    flex-direction: column;
+
+    .group-quiz {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+
+  .image-card {
+    display: block;
+    margin: 0 auto 25px;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .bird-card {
+    display: block;
+    margin-top: 40px;
+  }
+
+  .body-card {
+    flex-direction: row;
+  }
+
+  .image-card {
+    margin-right: 2rem;
+  }
+}
+
+@media (max-width: 570px) {
+  .body-card {
+    flex-direction: column;
+  }
+
+  .image-card {
+    margin: 0 auto 25px;
+  }
+
+  h4,
+  .body-card .group-quiz-item:nth-child(2) {
+    text-align: center;
+  }
+}

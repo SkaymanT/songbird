@@ -4,14 +4,14 @@
   margin-bottom: 1.5625rem;
   background-color: #303030;
   border-radius: 0.3rem;
-}
 
-.random-quiz .quiz-image {
-  width: 200px;
-  height: 155px;
-  border-radius: 10px;
-  margin: 0px;
-  border-top-width: 0;
+  .quiz-image {
+    width: 200px;
+    height: 155px;
+    border-radius: 10px;
+    margin: 0px;
+    border-top-width: 0;
+  }
 }
 
 .random-quiz>div {
@@ -24,7 +24,7 @@ ul {
   margin-bottom: 1rem;
 }
 
-.random-quiz .group-quiz {
+.group-quiz {
   margin: 0;
   padding: 0;
   margin-left: 40px;
@@ -33,18 +33,25 @@ ul {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  margin-left: 40px;
-}
 
-.random-quiz .group-quiz-item {
-  padding: .25rem;
-  position: relative;
-  display: block;
-  background-color: #303030;
-  border: 1px solid #555;
-  border-right-width: 0;
-  border-left-width: 0;
-  border-radius: 0;
+  .group-quiz-item {
+    padding: .25rem;
+    position: relative;
+    display: block;
+    background-color: #303030;
+    border: 1px solid #555;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-radius: 0;
+  }
+
+  .group-quiz-item:first-child {
+    border-top-width: 0;
+  }
+
+  .group-quiz-item:last-child {
+    border-bottom-width: 0;
+  }
 }
 
 h3 {
@@ -55,30 +62,41 @@ h3 {
   line-height: 1.2;
 }
 
-.random-quiz .group-quiz-item:first-child {
-  border-top-width: 0;
+
+@media (max-width: 992px) {
+  .random-quiz>div {
+    width: calc(100% - 220px);
+    margin: 0;
+  }
 }
 
-.random-quiz .group-quiz-item:last-child {
-  border-bottom-width: 0;
+@media (max-width: 768px) {
+  .random-quiz>div {
+    width: calc(100% - 210px);
+    margin: 0;
+  }
+
+  .group-quiz {
+    margin-left: 20px;
+  }
 }
 
 @media (max-width: 570px) {
   .random-quiz {
     flex-direction: column;
+
+    .quiz-image {
+      margin: 0 auto 25px;
+    }
+
+    .group-quiz {
+      margin-left: 0px;
+    }
   }
 
   .random-quiz>div {
     width: 100%;
     margin: 0;
-  }
-
-  .random-quiz .bird-image {
-    margin: 0 auto 25px;
-  }
-
-  .random-quiz .group-quiz {
-    margin-left: 0px;
   }
 
   h3 {
