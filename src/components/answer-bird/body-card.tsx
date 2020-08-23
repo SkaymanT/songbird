@@ -3,30 +3,24 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import { Ibird } from '../../interface';
 
-type BirdList = {
-  birds: Ibird[];
+type Tbird = {
+  bird: Ibird;
 };
 
-function BirdCard(): JSX.Element {
-  const name = 'Ворон';
-  const nameEnglish = 'Corvus corax';
-  const srcAudio =
-    'https://www.xeno-canto.org/sounds/uploaded/BLMSIUFTFU/XC512582-190604_1087_Grus_tok.mp3';
-  const srcImage =
-    'https://live.staticflickr.com//65535//49298804222_474cfe8682.jpg';
+function BodyCard({ bird }: Tbird): JSX.Element {
   return (
     <div className="body-card">
-      <img className="image-card" src={srcImage} alt={name} />
+      <img className="image-card" src={bird.image} alt={bird.name} />
       <ul className="group-quiz">
         <li className="group-quiz-item">
-          <h4>{name}</h4>
+          <h4>{bird.name}</h4>
         </li>
         <li className="group-quiz-item">
-          <span>{nameEnglish}</span>
+          <span>{bird.species}</span>
         </li>
         <li className="group-quiz-item">
           <AudioPlayer
-            src={srcAudio}
+            src={bird.audio}
             layout="horizontal-reverse"
             showJumpControls={false}
             customAdditionalControls={[]}
@@ -37,4 +31,4 @@ function BirdCard(): JSX.Element {
   );
 }
 
-export default BirdCard;
+export default BodyCard;

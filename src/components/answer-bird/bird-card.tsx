@@ -1,13 +1,13 @@
 import React from 'react';
 import BodyCard from './body-card';
+import { Ibird } from '../../interface';
 
-type RandomImg = {
-  img: string;
+type Tbird = {
+  bird: Ibird;
 };
 
-function BirdCard(): JSX.Element {
-  const definition =
-    'Ворон – крупная птица. Длина тела достигает 70 сантиметров, размах крыльев – до полутора метров. Вороны населяют окрестности Тауэра. В Англии бытует поверье, что в день, когда черные вороны улетят от Тауэра, монархия рухнет.';
+function BirdCard({ bird }: Tbird): JSX.Element {
+  console.log('bird', bird);
   return (
     <div className="column">
       <div className="bird-card">
@@ -15,9 +15,9 @@ function BirdCard(): JSX.Element {
           <span>Послушайте плеер.</span>
           <span>Выберите птицу из списка.</span>
         </p>
-        <BodyCard />
+        <BodyCard bird={bird} />
         <span className="definition-bird" style={{ display: 'flex' }}>
-          {definition}
+          {bird.description}
         </span>
       </div>
     </div>

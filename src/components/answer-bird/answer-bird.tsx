@@ -8,10 +8,11 @@ type BirdList = {
 };
 
 function AnswerBird({ birds }: BirdList): JSX.Element {
+  console.log('birds', birds[0]);
   return (
     <div className="answer-bird">
       <OptionAnswers birds={birds} />
-      <BirdCard />
+      <BirdCard bird={birds[1]} />
       <button className="btn">Next Level</button>
     </div>
   );

@@ -5,6 +5,10 @@ export interface Icategory {
 }
 
 export interface Ibird {
-  name: string;
   id: number;
+  name: string;
+  species?: string;
+  description?: string;
+  image?: string;
+  audio?: string;
 }
