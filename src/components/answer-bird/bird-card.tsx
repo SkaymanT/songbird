@@ -7,7 +7,7 @@ type Tbird = {
 };
 
 function BirdCard({ bird }: Tbird): JSX.Element {
-  console.log('bird', bird);
+  // console.log('bird', bird);
   return (
     <div className="column">
       <div className="bird-card">

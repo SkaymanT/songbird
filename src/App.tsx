@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import { BrowserRouter } from 'react-router-dom';
 import Header from './components/header/header';
@@ -10,11 +10,41 @@ import { Ibird } from './interface';
 import data from './data/data';
 
 function App(): JSX.Element {
-  // const [todos, setTodos] = useState<ITodo[]>([]);
-  const birds: Ibird[] = data[0];
-  const numRandom = randomNumber(0, birds.length);
-  const bird: Ibird = data[0][numRandom];
-  console.log(bird);
+  const bufData: Ibird[] = data[0];
+  const [birds, setBirds] = useState<Ibird[]>(
+    bufData.map((bird) => {
+      bird.isSucces = false;
+      bird.onClick = false;
+      return bird;
+    })
+  );
+  // const numRandom = randomNumber(0, birds.length - 1);
+  const bird: Ibird = birds[0];
+  // const removeHandler = (event: React.MouseEvent, id: number) => {
+  //   event.preventDefault();
+  //   onRemove(id);
+  // };
+
+  const checkBirdHandler = () => {
+    console.log('Проверка правильной птицы');
+  };
+
+  const changeBirdHandler = (id: number) => {
+    setBirds((prev) =>
+      prev.map((bird) => {
+        if (bird.id === id) {
+          bird.isSucces = true;
+          console.log('bird', bird);
+        }
+        return bird;
+      })
+    );
+    console.log('Изменение рандомной птицы');
+  };
+
+  const changeLevelHandler = () => {
+    console.log('Изменение уровня');
+  };
 
   // useEffect(() => {
   //   async function anyNameFunction() {
@@ -31,7 +61,7 @@ function App(): JSX.Element {
       <BrowserRouter>
         <Header />
         <RandomBird bird={bird} />
-        <AnswerBird birds={birds} />
+        <AnswerBird birds={birds} changeBird={changeBirdHandler} />
       </BrowserRouter>
     </div>
   );

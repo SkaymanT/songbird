@@ -7,8 +7,10 @@ export interface Icategory {
 export interface Ibird {
   id: number;
   name: string;
-  species?: string;
-  description?: string;
-  image?: string;
-  audio?: string;
+  species: string;
+  description: string;
+  image: string;
+  audio: string;
+  isSucces?: boolean;
+  onClick?: boolean;
 }

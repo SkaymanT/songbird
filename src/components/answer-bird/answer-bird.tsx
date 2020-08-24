@@ -5,14 +5,14 @@ import { Ibird } from '../../interface';
 
 type BirdList = {
   birds: Ibird[];
+  changeBird(id: number): void;
 };
 
-function AnswerBird({ birds }: BirdList): JSX.Element {
-  console.log('birds', birds[0]);
+function AnswerBird({ birds, changeBird }: BirdList): JSX.Element {
   return (
     <div className="answer-bird">
-      <OptionAnswers birds={birds} />
-      <BirdCard bird={birds[1]} />
+      <OptionAnswers birds={birds} changeBird={changeBird} />
+      <BirdCard bird={birds[0]} />
       <button className="btn">Next Level</button>
     </div>
   );
