@@ -1,5 +1,6 @@
-import React from 'react';
-import { Ibird } from '../../interface';
+import React from "react";
+import { Ibird } from "../../interface";
+import { useBirdCard } from "./BirdCardContext";
 
 type BirdList = {
   birds: Ibird[];
@@ -7,18 +8,17 @@ type BirdList = {
 };
 
 function DetailsOption({ birds, changeBird }: BirdList): JSX.Element {
+  const { toggle } = useBirdCard()!;
   return (
     <div className="column">
       <ul className="item-list">
         {birds.map((bird) => {
-          const classes = ['item-list-item'];
+          const classes = ["item-list-item"];
           return (
             <li
-              className={classes.join(' ')}
+              className={classes.join(" ")}
               key={bird.id}
-              onClick={() => {
-                changeBird(bird.id);
-              }}
+              onClick={() => toggle(bird.id)}
             >
               <span className="li-btn"></span>
               {bird.name}

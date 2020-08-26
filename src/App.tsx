@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Header from './components/header/header';
 import RandomBird from './components/random-bird/random-bird';
 import AnswerBird from './components/answer-bird/answer-bird';
+import AudioSound from './components/audio/audioSound';
 // import { http } from './common/network/network';
 import { randomNumber } from './common/random/random';
 import { Ibird } from './interface';
@@ -62,6 +63,7 @@ function App(): JSX.Element {
         <Header />
         <RandomBird bird={bird} />
         <AnswerBird birds={birds} changeBird={changeBirdHandler} />
+        <AudioSound />
       </BrowserRouter>
     </div>
   );
