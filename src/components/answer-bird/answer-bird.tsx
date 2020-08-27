@@ -1,25 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import OptionAnswers from './option-answers';
 import BirdCard from './bird-card';
-import { Ibird } from '../../interface';
-import BirdCardProvider from './BirdCardContext';
+import { Ibird, IstateAnswers } from '../../interface';
+import AudioSound from '../audio/audioSound';
+// import BirdCardProvider from './BirdCardContext';
 
 type BirdList = {
   birds: Ibird[];
-  changeBird(id: number): void;
+  numberSucces: number;
+  // changeBird(id: number): void;
 };
 
-export default function AnswerBird({
-  birds,
-  changeBird,
-}: BirdList): JSX.Element {
+function AnswerBird({ birds, numberSucces }: BirdList): JSX.Element {
+  const [birdsState, setStateBirds] = useState<IstateAnswers>({
+    isStart: false,
+    idActive: 0,
+  });
+  const clickOnBird = (id: number) => {
+    setStateBirds((prev) => ({
+      isStart: true,
+      idActive: id,
+    }));
+  };
+
   return (
-    <BirdCardProvider>
-      <div className="answer-bird">
-        <OptionAnswers birds={birds} changeBird={changeBird} />
-        <BirdCard birds={birds} />
-        <button className="btn">Next Level</button>
-      </div>
-    </BirdCardProvider>
+    // <BirdCardProvider>
+    <div className="answer-bird">
+      <OptionAnswers
+        birds={birds}
+        numberSucces={numberSucces}
+        clickOnBird={clickOnBird}
+      />
+      <BirdCard birds={birds} stateAnswer={birdsState} />
+      <button className="btn">Next Level</button>
+      <AudioSound isSucces={birdsState.isStart}></AudioSound>
+    </div>
+    // </BirdCardProvider>
   );
 }
+
+export default AnswerBird;

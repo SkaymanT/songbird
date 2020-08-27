@@ -8,22 +8,32 @@ const useAudio = (url: string) => {
 
   useEffect(() => {
     playing ? audio.play() : audio.pause();
-  }, [playing]);
+  }, [audio, playing]);
 
   useEffect(() => {
     audio.addEventListener('ended', () => setPlaying(false));
     return () => {
       audio.removeEventListener('ended', () => setPlaying(false));
     };
-  }, []);
+  }, [audio]);
 
   return [playing, toggle];
 };
 
-export default function AudioSound(): JSX.Element {
-  const srcWin = '/static/audio/win.mp3';
+type TisSucces = {
+  isSucces: boolean;
+};
+
+export default function AudioSound({ isSucces }: TisSucces): JSX.Element {
+  const srcSucces = '/static/audio/win.mp3';
   const srcError = '/static/audio/error.mp3';
-  const [playing, toggle] = useAudio(srcWin);
-  const audio = new Audio(srcWin);
+  const [playing, toggle] = useAudio(srcSucces);
+  if (!isSucces) {
+    const audio = new Audio(srcSucces);
+    audio.play();
+  } else {
+    const audio = new Audio(srcError);
+    audio.play();
+  }
   return <audio src={srcError} id="errorSound"></audio>;
 }
