@@ -21,6 +21,7 @@ function BodyCard({ bird }: Tbird): JSX.Element {
         <li className="group-quiz-item">
           <AudioPlayer
             src={bird.audio}
+            autoPlayAfterSrcChange={false}
             layout="horizontal-reverse"
             showJumpControls={false}
             customAdditionalControls={[]}
