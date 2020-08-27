@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import OptionAnswers from './option-answers';
 import BirdCard from './bird-card';
 import { Ibird, IstateAnswers } from '../../interface';
-import AudioSound from '../audio/audioSound';
+
 // import BirdCardProvider from './BirdCardContext';
 
 type BirdList = {
@@ -24,7 +24,6 @@ function AnswerBird({ birds, numberSucces }: BirdList): JSX.Element {
   };
 
   return (
-    // <BirdCardProvider>
     <div className="answer-bird">
       <OptionAnswers
         birds={birds}
@@ -33,9 +32,7 @@ function AnswerBird({ birds, numberSucces }: BirdList): JSX.Element {
       />
       <BirdCard birds={birds} stateAnswer={birdsState} />
       <button className="btn">Next Level</button>
-      <AudioSound isSucces={birdsState.isStart}></AudioSound>
     </div>
-    // </BirdCardProvider>
   );
 }
 

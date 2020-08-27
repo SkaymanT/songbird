@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import './App.scss';
-import { BrowserRouter } from 'react-router-dom';
 import Header from './components/header/header';
 import RandomBird from './components/random-bird/random-bird';
 import AnswerBird from './components/answer-bird/answer-bird';
-import AudioSound from './components/audio/audioSound';
 import { randomNumber } from './common/random/random';
 import { Ibird, IstateApp } from './interface';
 import data from './data/data';
+import AppProvider from './components/answer-bird/contextApp';
 
 function App(): JSX.Element {
   const birds: Ibird[] = data[0];
@@ -18,6 +17,7 @@ function App(): JSX.Element {
   });
 
   const bird: Ibird = birds[stateApp.random];
+
   const nextLevel = (score: number) => {
     setRandom((prev) => ({
       level: prev.level++,
@@ -28,11 +28,11 @@ function App(): JSX.Element {
 
   return (
     <div className="container">
-      <BrowserRouter>
+      <AppProvider>
         <Header />
         <RandomBird bird={bird} />
         <AnswerBird birds={birds} numberSucces={stateApp.random} />
-      </BrowserRouter>
+      </AppProvider>
     </div>
   );
 }

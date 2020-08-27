@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Ibird, IstateAnswers, Ioption } from '../../interface';
-import { useBirdCard } from './BirdCardContext';
+import { Ibird, Ioption } from '../../interface';
 
 type BirdList = {
   birds: Ibird[];
@@ -18,20 +17,29 @@ function DetailsOption({
     bufOption.push({ onClickOption: false });
   });
   const [optionState, setOptionState] = useState<Ioption[]>(bufOption);
-  // const { toggle } = useBirdCard()!;
 
   const clickOnOption = (id: number) => {
-    setOptionState((prev) =>
-      prev.map((option, index) => {
-        if (index === id - 1) {
-          option.onClickOption = true;
-        }
-        return option;
-      })
-    );
-    clickOnBird(id);
+    const srcSucces = '/static/audio/success.mp3';
+    const srcError = '/static/audio/error.mp3';
+    if (!optionState[id - 1].onClickOption) {
+      if (numberSucces === id - 1) {
+        const audio = new Audio(srcSucces);
+        audio.play();
+      } else {
+        const audio = new Audio(srcError);
+        audio.play();
+      }
+      setOptionState((prev) =>
+        prev.map((option, index) => {
+          if (index === id - 1) {
+            option.onClickOption = true;
+          }
+          return option;
+        })
+      );
+      clickOnBird(id);
+    }
   };
-  console.log(optionState);
   return (
     <div className="column">
       <ul className="item-list">
@@ -39,7 +47,7 @@ function DetailsOption({
           let classes = ['item-list-item'];
           if (optionState[index].onClickOption) {
             if (numberSucces === index) {
-              classes.push('succes');
+              classes.push('success');
             } else {
               classes.push('error');
             }
