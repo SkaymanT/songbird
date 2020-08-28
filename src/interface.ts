@@ -20,9 +20,12 @@ export interface Ibird {
 
 export interface IstateAnswers {
   isStart: boolean;
+  isEnd: boolean;
+  scoreRound: number;
   idActive: number;
 }
 
-export interface Ioption {
-  onClickOption: boolean;
+export interface IstateOption {
+  scoreRound: number;
+  option: boolean[];
 }

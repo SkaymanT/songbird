@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Ibird, Ioption } from '../../interface';
+import { Ibird, IstateOption } from '../../interface';
 
 type BirdList = {
   birds: Ibird[];
   numberSucces: number;
-  clickOnBird(id: number): void;
+  clickOnBird(id: number, isGame: boolean, scoreRound: number): void;
 };
 
 function DetailsOption({
@@ -12,32 +12,45 @@ function DetailsOption({
   numberSucces,
   clickOnBird,
 }: BirdList): JSX.Element {
-  const bufOption: Ioption[] = [];
+  const bufOption: IstateOption = {} as IstateOption;
+  bufOption.scoreRound = 5;
+  bufOption.option = [];
   birds.forEach(() => {
-    bufOption.push({ onClickOption: false });
+    bufOption.option.push(false);
   });
-  const [optionState, setOptionState] = useState<Ioption[]>(bufOption);
-
+  const [optionState, setOptionState] = useState<IstateOption>(bufOption);
+  console.log(optionState);
   const clickOnOption = (id: number) => {
     const srcSucces = '/static/audio/success.mp3';
     const srcError = '/static/audio/error.mp3';
-    if (!optionState[id - 1].onClickOption) {
+    if (!optionState.option[id - 1]) {
       if (numberSucces === id - 1) {
         const audio = new Audio(srcSucces);
         audio.play();
+        clickOnBird(id, true, bufOption.scoreRound);
+        setOptionState((prev) => ({
+          scoreRound: prev.scoreRound,
+          option: prev.option.map((option, index) => {
+            if (index === id - 1) {
+              option = true;
+            }
+            return option;
+          }),
+        }));
       } else {
         const audio = new Audio(srcError);
         audio.play();
+        clickOnBird(id, false, bufOption.scoreRound);
+        setOptionState((prev) => ({
+          scoreRound: --prev.scoreRound,
+          option: prev.option.map((option, index) => {
+            if (index === id - 1) {
+              option = true;
+            }
+            return option;
+          }),
+        }));
       }
-      setOptionState((prev) =>
-        prev.map((option, index) => {
-          if (index === id - 1) {
-            option.onClickOption = true;
-          }
-          return option;
-        })
-      );
-      clickOnBird(id);
     }
   };
   return (
@@ -45,7 +58,7 @@ function DetailsOption({
       <ul className="item-list">
         {birds.map((bird, index) => {
           let classes = ['item-list-item'];
-          if (optionState[index].onClickOption) {
+          if (optionState.option[index]) {
             if (numberSucces === index) {
               classes.push('success');
             } else {

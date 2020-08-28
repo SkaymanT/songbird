@@ -3,15 +3,15 @@ import BirdAudio from './random-audio';
 import { Ibird } from '../../interface';
 
 type RandomBird = {
-  bird: Ibird;
+  birds: Ibird[][];
 };
 
-function RandomBird({ bird }: RandomBird): JSX.Element {
+function RandomBird({ birds }: RandomBird): JSX.Element {
   const image = '/static/media/bird.jpg';
   return (
     <div className="random-quiz">
       <img className="quiz-image" src={image} alt="bird" />
-      <BirdAudio bird={bird} />
+      <BirdAudio bird={birds[0][0]} />
     </div>
   );
 }

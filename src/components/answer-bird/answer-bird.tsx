@@ -2,36 +2,64 @@ import React, { useState } from 'react';
 import OptionAnswers from './option-answers';
 import BirdCard from './bird-card';
 import { Ibird, IstateAnswers } from '../../interface';
-
-// import BirdCardProvider from './BirdCardContext';
+import { useStateApp } from '../../appContext';
 
 type BirdList = {
-  birds: Ibird[];
-  numberSucces: number;
-  // changeBird(id: number): void;
+  birds: Ibird[][];
 };
 
-function AnswerBird({ birds, numberSucces }: BirdList): JSX.Element {
+function AnswerBird({ birds }: BirdList): JSX.Element {
+  const stateApp = useStateApp();
+
   const [birdsState, setStateBirds] = useState<IstateAnswers>({
     isStart: false,
+    isEnd: false,
+    scoreRound: 0,
     idActive: 0,
   });
-  const clickOnBird = (id: number) => {
+  const nextLevelBirds = (scoreRound: number) => {
+    stateApp.nextLevel(birdsState.scoreRound);
+    setStateBirds((prev) => ({
+      isStart: false,
+      isEnd: false,
+      scoreRound: 0,
+      idActive: 0,
+    }));
+  };
+
+  const clickOnBird = (id: number, isEnd: boolean, scoreRound: number) => {
     setStateBirds((prev) => ({
       isStart: true,
+      isEnd: isEnd,
+      scoreRound: scoreRound,
       idActive: id,
     }));
   };
 
+  let classes = ['btn'];
+  if (birdsState.isEnd) {
+    classes.push('next-level');
+  }
   return (
     <div className="answer-bird">
       <OptionAnswers
-        birds={birds}
-        numberSucces={numberSucces}
+        birds={birds[stateApp.stateApp.level]}
+        numberSucces={stateApp.stateApp.random}
         clickOnBird={clickOnBird}
       />
-      <BirdCard birds={birds} stateAnswer={birdsState} />
-      <button className="btn">Next Level</button>
+      <BirdCard
+        birds={birds[stateApp.stateApp.level]}
+        stateAnswer={birdsState}
+      />
+      <button
+        className={classes.join(' ')}
+        disabled={!birdsState.isEnd}
+        onClick={() => {
+          nextLevelBirds(birdsState.scoreRound);
+        }}
+      >
+        Следующее испытание
+      </button>
     </div>
   );
 }
