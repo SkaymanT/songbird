@@ -23,16 +23,15 @@ function DetailsOption({
   const [optionState, setOptionState] = useState<IstateOption>(bufOption);
 
   useEffect(() => {
-    setOptionState(prev => bufOption);
+    setOptionState((prev) => bufOption);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggleGame]);
 
-  console.log(optionState);
   const clickOnOption = (id: number) => {
     const srcSucces = '/static/audio/success.mp3';
     const srcError = '/static/audio/error.mp3';
 
     if (!optionState.isFinishedRound) {
-      console.log(optionState, optionState.option[id - 1]);
       if (numberSucces === id - 1) {
         const audio = new Audio(srcSucces);
         audio.play();
@@ -51,7 +50,7 @@ function DetailsOption({
         const audio = new Audio(srcError);
         audio.play();
         setOptionState((prev) => ({
-          scoreRound: prev.scoreRound-1,
+          scoreRound: prev.scoreRound - 1,
           isFinishedRound: false,
           option: prev.option.map((option, index) => {
             if (index === id - 1) {
@@ -62,7 +61,7 @@ function DetailsOption({
         }));
         clickOnBird(id, false, optionState.scoreRound);
       }
-    } else{
+    } else {
       clickOnBird(id, true, optionState.scoreRound);
     }
   };

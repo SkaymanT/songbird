@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
-import { randomNumber } from "./common/random/random";
-import data from "./data/data";
-import { prependOnceListener } from "process";
+import React, { useState, useContext } from 'react';
+import { randomNumber } from './common/random/random';
+import data from './data/data';
 
 type AppContextType = {
   stateApp: StateAppType;
@@ -37,9 +36,7 @@ export default function AppProvider({ children }: Props): JSX.Element {
   });
 
   const nextLevel = (scoreRound: number) => {
-    console.log(stateApp.level);
     if (stateApp.level === 5) {
-      console.log("game over");
       setStateApp((prev) => ({
         score: prev.score,
         level: prev.level,

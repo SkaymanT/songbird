@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import BodyCard from './body-card';
 import { Ibird, IstateAnswers } from '../../interface';
 
@@ -23,7 +23,7 @@ function BirdCard({ birds, stateAnswer }: Tbird): JSX.Element {
     <div className="column">
       <div className="bird-card">
         <BodyCard bird={birds[stateAnswer.idActive - 1]} />
-        <span className="definition-bird" >
+        <span className="definition-bird">
           {birds[stateAnswer.idActive - 1].description}
         </span>
       </div>
