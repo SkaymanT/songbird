@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import OptionAnswers from "./option-answers";
-import BirdCard from "./bird-card";
-import { Ibird, IstateAnswers } from "../../interface";
-import { useStateApp } from "../../appContext";
+import React, { useState } from 'react';
+import OptionAnswers from './option-answers';
+import BirdCard from './bird-card';
+import { Ibird, IstateAnswers } from '../../interface';
+import { useStateApp } from '../../appContext';
 
 type BirdList = {
   birds: Ibird[][];
@@ -35,35 +35,34 @@ function AnswerBird({ birds }: BirdList): JSX.Element {
       scoreRound: scoreRound,
       idActive: id,
     }));
-    console.log(scoreRound);
   };
 
-  let classes = ["btn"];
+  let classes = ['btn'];
   if (birdsState.isEnd) {
-    classes.push("next-level");
+    classes.push('next-level');
   }
-    return (
-      <div className="answer-bird">
-        <OptionAnswers
-          birds={birds[stateApp.stateApp.level]}
-          numberSucces={stateApp.stateApp.random}
-          toggleGame={stateApp.stateApp.isNext}
-          clickOnBird={clickOnBird}
-        />
-        <BirdCard
-          birds={birds[stateApp.stateApp.level]}
-          stateAnswer={birdsState}
-        />
-        <button
-          className={classes.join(" ")}
-          disabled={!birdsState.isEnd}
-          onClick={() => {
-            nextLevelBirds(birdsState.scoreRound);
-          }}
-        >
-          Следующее испытание
-        </button>
-      </div>
-    );
+  return (
+    <div className="answer-bird">
+      <OptionAnswers
+        birds={birds[stateApp.stateApp.level]}
+        numberSucces={stateApp.stateApp.random}
+        toggleGame={stateApp.stateApp.isNext}
+        clickOnBird={clickOnBird}
+      />
+      <BirdCard
+        birds={birds[stateApp.stateApp.level]}
+        stateAnswer={birdsState}
+      />
+      <button
+        className={classes.join(' ')}
+        disabled={!birdsState.isEnd}
+        onClick={() => {
+          nextLevelBirds(birdsState.scoreRound);
+        }}
+      >
+        Следующее испытание
+      </button>
+    </div>
+  );
 }
 export default AnswerBird;
