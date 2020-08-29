@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import BodyCard from './body-card';
 import { Ibird, IstateAnswers } from '../../interface';
-// import { useBirdCard } from './BirdCardContext';
 
 type Tbird = {
   birds: Ibird[];
@@ -9,7 +8,6 @@ type Tbird = {
 };
 
 function BirdCard({ birds, stateAnswer }: Tbird): JSX.Element {
-  // const birdCard = useBirdCard();
   if (!stateAnswer.isStart)
     return (
       <div className="column">
@@ -25,7 +23,7 @@ function BirdCard({ birds, stateAnswer }: Tbird): JSX.Element {
     <div className="column">
       <div className="bird-card">
         <BodyCard bird={birds[stateAnswer.idActive - 1]} />
-        <span className="definition-bird" style={{ display: 'flex' }}>
+        <span className="definition-bird" >
           {birds[stateAnswer.idActive - 1].description}
         </span>
       </div>

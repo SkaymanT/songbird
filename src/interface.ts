@@ -27,5 +27,6 @@ export interface IstateAnswers {
 
 export interface IstateOption {
   scoreRound: number;
+  isFinishedRound: boolean;
   option: boolean[];
 }

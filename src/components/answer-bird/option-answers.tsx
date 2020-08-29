@@ -21,22 +21,24 @@ function DetailsOption({
     bufOption.option.push(false);
   });
   const [optionState, setOptionState] = useState<IstateOption>(bufOption);
-  console.log(optionState);
 
   useEffect(() => {
-    setOptionState(bufOption);
+    setOptionState(prev => bufOption);
   }, [toggleGame]);
 
+  console.log(optionState);
   const clickOnOption = (id: number) => {
     const srcSucces = '/static/audio/success.mp3';
     const srcError = '/static/audio/error.mp3';
-    if (!optionState.option[id - 1]) {
+
+    if (!optionState.isFinishedRound) {
+      console.log(optionState, optionState.option[id - 1]);
       if (numberSucces === id - 1) {
         const audio = new Audio(srcSucces);
         audio.play();
-        clickOnBird(id, true, bufOption.scoreRound);
         setOptionState((prev) => ({
           scoreRound: prev.scoreRound,
+          isFinishedRound: true,
           option: prev.option.map((option, index) => {
             if (index === id - 1) {
               option = true;
@@ -44,12 +46,13 @@ function DetailsOption({
             return option;
           }),
         }));
+        clickOnBird(id, true, optionState.scoreRound);
       } else {
         const audio = new Audio(srcError);
         audio.play();
-        clickOnBird(id, false, bufOption.scoreRound);
         setOptionState((prev) => ({
-          scoreRound: --prev.scoreRound,
+          scoreRound: prev.scoreRound-1,
+          isFinishedRound: false,
           option: prev.option.map((option, index) => {
             if (index === id - 1) {
               option = true;
@@ -57,9 +60,13 @@ function DetailsOption({
             return option;
           }),
         }));
+        clickOnBird(id, false, optionState.scoreRound);
       }
+    } else{
+      clickOnBird(id, true, optionState.scoreRound);
     }
   };
+
   return (
     <div className="column">
       <ul className="item-list">

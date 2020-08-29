@@ -1,11 +1,9 @@
-import React from 'react';
-import './App.scss';
-import Header from './components/header/header';
-import RandomBird from './components/random-bird/random-bird';
-import AnswerBird from './components/answer-bird/answer-bird';
-import { Ibird } from './interface';
-import data from './data/data';
-import AppProvider from './appContext';
+import React from "react";
+import "./App.scss";
+import { Ibird } from "./interface";
+import data from "./data/data";
+import AppProvider from "./appContext";
+import Main from "./components/main/main";
 
 function App(): JSX.Element {
   const birds: Ibird[][] = data;
@@ -13,9 +11,7 @@ function App(): JSX.Element {
   return (
     <div className="container">
       <AppProvider>
-        <Header />
-        <RandomBird birds={birds} />
-        <AnswerBird birds={birds} />
+        <Main birds={birds}/>
       </AppProvider>
     </div>
   );

@@ -1,10 +1,12 @@
-import React, { useState, useContext } from 'react';
-import { randomNumber } from './common/random/random';
-import data from './data/data';
+import React, { useState, useContext } from "react";
+import { randomNumber } from "./common/random/random";
+import data from "./data/data";
+import { prependOnceListener } from "process";
 
 type AppContextType = {
   stateApp: StateAppType;
   nextLevel(score: number): void;
+  nextGame(): void;
 };
 
 const AppContext = React.createContext<AppContextType>({} as AppContextType);
@@ -18,6 +20,7 @@ type StateAppType = {
   level: number;
   isNext: boolean;
   random: number;
+  isGameOver: boolean;
 };
 
 type Props = {
@@ -29,20 +32,44 @@ export default function AppProvider({ children }: Props): JSX.Element {
     score: 0,
     level: 0,
     isNext: false,
-    random: 0,
+    random: randomNumber(0, data[0].length - 1),
+    isGameOver: false,
   });
 
   const nextLevel = (scoreRound: number) => {
+    console.log(stateApp.level);
+    if (stateApp.level === 5) {
+      console.log("game over");
+      setStateApp((prev) => ({
+        score: prev.score,
+        level: prev.level,
+        isNext: prev.isNext,
+        random: randomNumber(0, data[prev.level].length - 1),
+        isGameOver: true,
+      }));
+    } else {
+      setStateApp((prev) => ({
+        score: prev.score + scoreRound,
+        level: prev.level + 1,
+        isNext: !prev.isNext,
+        random: randomNumber(0, data[prev.level].length - 1),
+        isGameOver: false,
+      }));
+    }
+  };
+
+  const nextGame = () => {
     setStateApp((prev) => ({
-      score: prev.score + scoreRound,
-      level: ++prev.level,
-      isNext: !prev.isNext,
+      score: 0,
+      level: 0,
+      isNext: false,
       random: randomNumber(0, data[prev.level].length - 1),
+      isGameOver: false,
     }));
   };
 
   return (
-    <AppContext.Provider value={{ stateApp, nextLevel }}>
+    <AppContext.Provider value={{ stateApp, nextLevel, nextGame }}>
       {children}
     </AppContext.Provider>
   );

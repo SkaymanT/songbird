@@ -5,11 +5,10 @@ import { useStateApp } from '../../appContext';
 
 export default function Header(): JSX.Element {
   const stateApp = useStateApp();
-  const score = stateApp.stateApp.score;
   return (
     <div className="header">
-      <TopPanel score={score} />
-      <Categories />
+      <TopPanel score={stateApp.stateApp.score} />
+      <Categories activeCategories={stateApp.stateApp.level}/>
     </div>
   );
 }
