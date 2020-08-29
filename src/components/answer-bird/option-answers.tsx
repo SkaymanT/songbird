@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Ibird, IstateOption } from '../../interface';
 
 type BirdList = {
   birds: Ibird[];
   numberSucces: number;
+  toggleGame: boolean;
   clickOnBird(id: number, isGame: boolean, scoreRound: number): void;
 };
 
 function DetailsOption({
   birds,
   numberSucces,
+  toggleGame,
   clickOnBird,
 }: BirdList): JSX.Element {
   const bufOption: IstateOption = {} as IstateOption;
@@ -20,6 +22,11 @@ function DetailsOption({
   });
   const [optionState, setOptionState] = useState<IstateOption>(bufOption);
   console.log(optionState);
+
+  useEffect(() => {
+    setOptionState(bufOption);
+  }, [toggleGame]);
+
   const clickOnOption = (id: number) => {
     const srcSucces = '/static/audio/success.mp3';
     const srcError = '/static/audio/error.mp3';

@@ -17,8 +17,9 @@ function AnswerBird({ birds }: BirdList): JSX.Element {
     scoreRound: 0,
     idActive: 0,
   });
+
   const nextLevelBirds = (scoreRound: number) => {
-    stateApp.nextLevel(birdsState.scoreRound);
+    stateApp.nextLevel(scoreRound);
     setStateBirds((prev) => ({
       isStart: false,
       isEnd: false,
@@ -28,6 +29,7 @@ function AnswerBird({ birds }: BirdList): JSX.Element {
   };
 
   const clickOnBird = (id: number, isEnd: boolean, scoreRound: number) => {
+    stateApp.stateApp.isNext = false;
     setStateBirds((prev) => ({
       isStart: true,
       isEnd: isEnd,
@@ -45,6 +47,7 @@ function AnswerBird({ birds }: BirdList): JSX.Element {
       <OptionAnswers
         birds={birds[stateApp.stateApp.level]}
         numberSucces={stateApp.stateApp.random}
+        toggleGame={stateApp.stateApp.isNext}
         clickOnBird={clickOnBird}
       />
       <BirdCard
