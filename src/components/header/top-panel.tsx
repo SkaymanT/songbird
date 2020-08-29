@@ -1,11 +1,15 @@
 import React from 'react';
 
-export default function TopPanel(): JSX.Element {
+type ScoreType = {
+  score: number;
+};
+
+export default function TopPanel({ score }: ScoreType ): JSX.Element {
   return (
     <div className="top-panel">
       <div className="logo" />
       <h5>
-        Score: <span className="score">0</span>
+        Счёт: <span className="score">{score}</span>
       </h5>
     </div>
   );

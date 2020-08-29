@@ -1,15 +1,17 @@
 import React from 'react';
 import BirdAudio from './random-audio';
+import { Ibird } from '../../interface';
 
-type RandomImg = {
-  img: string;
+type RandomBird = {
+  birds: Ibird[][];
 };
 
-function RandomBird({ img }: RandomImg): JSX.Element {
+function RandomBird({ birds }: RandomBird): JSX.Element {
+  const image = '/static/media/bird.jpg';
   return (
     <div className="random-quiz">
-      <img className="quiz-image" src={img} alt="bird" />
-      <BirdAudio />
+      <img className="quiz-image" src={image} alt="bird" />
+      <BirdAudio bird={birds[0][0]} />
     </div>
   );
 }

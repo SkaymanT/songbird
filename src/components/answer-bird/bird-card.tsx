@@ -1,23 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import BodyCard from './body-card';
+import { Ibird, IstateAnswers } from '../../interface';
 
-type RandomImg = {
-  img: string;
+type Tbird = {
+  birds: Ibird[];
+  stateAnswer: IstateAnswers;
 };
 
-function BirdCard(): JSX.Element {
-  const definition =
-    'Ворон – крупная птица. Длина тела достигает 70 сантиметров, размах крыльев – до полутора метров. Вороны населяют окрестности Тауэра. В Англии бытует поверье, что в день, когда черные вороны улетят от Тауэра, монархия рухнет.';
+function BirdCard({ birds, stateAnswer }: Tbird): JSX.Element {
+  if (!stateAnswer.isStart)
+    return (
+      <div className="column">
+        <div className="bird-card">
+          <p className="description">
+            <span>Послушайте плеер.</span>
+            <span>Выберите птицу из списка.</span>
+          </p>
+        </div>
+      </div>
+    );
   return (
     <div className="column">
       <div className="bird-card">
-        <p className="description">
-          <span>Послушайте плеер.</span>
-          <span>Выберите птицу из списка.</span>
-        </p>
-        <BodyCard />
-        <span className="definition-bird" style={{ display: 'flex' }}>
-          {definition}
+        <BodyCard bird={birds[stateAnswer.idActive - 1]} />
+        <span className="definition-bird" >
+          {birds[stateAnswer.idActive - 1].description}
         </span>
       </div>
     </div>

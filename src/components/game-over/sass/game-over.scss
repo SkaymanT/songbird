@@ -1,0 +1,50 @@
+.game-over {
+  display: block;
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #303030;
+  border-radius: 0.3rem;
+
+  .title-game-over {
+    text-align: center;
+    font-size: 4.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  .text-game-over {
+    text-align: center;
+    font-size: 1.171875rem;
+    font-weight: 300;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .hr-game-over {
+    margin-bottom: 1.5rem !important;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .button-game-over {
+    width: 100%;
+    padding: 15px;
+    margin: 25px 0;
+    box-shadow: none;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    background-color: #00bc8c;
+    border: 1px solid #444;
+    color: #fff;
+  }
+}
+
+@media (min-width: 576px) {
+  .game-over {
+    padding: 4rem 2rem;
+  }
+}
