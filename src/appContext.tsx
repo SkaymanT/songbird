@@ -38,7 +38,7 @@ export default function AppProvider({ children }: Props): JSX.Element {
   const nextLevel = (scoreRound: number) => {
     if (stateApp.level === 5) {
       setStateApp((prev) => ({
-        score: prev.score,
+        score: prev.score + scoreRound,
         level: prev.level,
         isNext: prev.isNext,
         random: randomNumber(0, data[prev.level].length - 1),

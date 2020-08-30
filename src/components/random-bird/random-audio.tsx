@@ -9,6 +9,7 @@ type RandomAudio = {
 
 function BirdAudio({ bird }: RandomAudio): JSX.Element {
   const nameBird = '******';
+  console.log(bird.name);
   return (
     <div>
       <ul className="group-quiz">
