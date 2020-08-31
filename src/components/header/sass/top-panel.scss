@@ -1,0 +1,29 @@
+.top-panel {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  justify-content: space-between;
+  display: flex;
+}
+
+.top-panel .logo {
+  background-image: url("/static/media/logo.svg");
+  width: 200px;
+  height: 55px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+h5 {
+  font-weight: 500;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+h5 {
+  font-size: 1.171875rem;
+}
+
+.score {
+  line-height: 55px;
+}

@@ -1,0 +1,8 @@
+ @import './top-panel.scss';
+ @import './categories.scss';
+
+ .header {
+   margin-top: .5rem;
+   display: flex !important;
+   flex-direction: column;
+ }
