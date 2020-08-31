@@ -8,7 +8,7 @@ export default function Header(): JSX.Element {
   return (
     <div className="header">
       <TopPanel score={stateApp.stateApp.score} />
-      <Categories activeCategories={stateApp.stateApp.level}/>
+      <Categories activeCategories={stateApp.stateApp.level} />
     </div>
   );
 }

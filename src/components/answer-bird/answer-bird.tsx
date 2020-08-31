@@ -48,6 +48,7 @@ function AnswerBird({ birds }: BirdList): JSX.Element {
         numberSucces={stateApp.stateApp.random}
         toggleGame={stateApp.stateApp.isNext}
         clickOnBird={clickOnBird}
+        isTrueBird={stateApp.isTrue}
       />
       <BirdCard
         birds={birds[stateApp.stateApp.level]}

@@ -6,6 +6,7 @@ type BirdList = {
   numberSucces: number;
   toggleGame: boolean;
   clickOnBird(id: number, isGame: boolean, scoreRound: number): void;
+  isTrueBird(): void;
 };
 
 function DetailsOption({
@@ -13,6 +14,7 @@ function DetailsOption({
   numberSucces,
   toggleGame,
   clickOnBird,
+  isTrueBird,
 }: BirdList): JSX.Element {
   const bufOption: IstateOption = {} as IstateOption;
   bufOption.scoreRound = 5;
@@ -46,6 +48,7 @@ function DetailsOption({
           }),
         }));
         clickOnBird(id, true, optionState.scoreRound);
+        isTrueBird();
       } else {
         const audio = new Audio(srcError);
         audio.play();

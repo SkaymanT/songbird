@@ -8,13 +8,23 @@ type RandomBird = {
 };
 
 function RandomBird({ birds }: RandomBird): JSX.Element {
-  const image = '/static/media/bird.jpg';
   const stateApp = useStateApp();
+  let image: string;
+  if (stateApp.stateApp.isTrue) {
+    image = birds[stateApp.stateApp.level][stateApp.stateApp.random].image;
+  } else {
+    image = '/static/media/bird.jpg';
+    console.log(
+      'Правильный ответ:',
+      birds[stateApp.stateApp.level][stateApp.stateApp.random].name
+    );
+  }
   return (
     <div className="random-quiz">
       <img className="quiz-image" src={image} alt="bird" />
       <BirdAudio
         bird={birds[stateApp.stateApp.level][stateApp.stateApp.random]}
+        isTrue={stateApp.stateApp.isTrue}
       />
     </div>
   );
