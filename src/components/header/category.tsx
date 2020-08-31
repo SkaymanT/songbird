@@ -13,7 +13,7 @@ export default function Category({ item }: NameCategory): JSX.Element {
 
   return (
     <li className={classes.join(' ')}>
-      <a className="category-link" href="/">
+      <a className="category-link" href="/#">
         {item.name}
       </a>
     </li>
