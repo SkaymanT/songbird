@@ -70,7 +70,6 @@ function DetailsOption({
       clickOnBird(id, true, optionState.scoreRound);
     }
   };
-  console.log(optionState);
   return (
     <div className="column">
       <ul className="item-list">
