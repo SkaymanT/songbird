@@ -52,23 +52,24 @@ function DetailsOption({
       } else {
         const audio = new Audio(srcError);
         audio.play();
-        setOptionState((prev) => ({
-          scoreRound: prev.scoreRound - 1,
-          isFinishedRound: false,
-          option: prev.option.map((option, index) => {
-            if (index === id - 1) {
-              option = true;
-            }
-            return option;
-          }),
-        }));
+        if (!optionState.option[id - 1]) {
+          setOptionState((prev) => ({
+            scoreRound: prev.scoreRound - 1,
+            isFinishedRound: false,
+            option: prev.option.map((option, index) => {
+              if (index === id - 1) {
+                option = true;
+              }
+              return option;
+            }),
+          }));
+        }
         clickOnBird(id, false, optionState.scoreRound);
       }
     } else {
       clickOnBird(id, true, optionState.scoreRound);
     }
   };
-
   return (
     <div className="column">
       <ul className="item-list">
